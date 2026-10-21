@@ -1,0 +1,41 @@
+name: zutor
+
+services:
+  zutor-db:
+    container_name: zutor-db
+    build: ./db
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - zutor-db-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  zutor-api:
+    container_name: zutor-api
+    build: ./api
+    restart: unless-stopped
+    environment:
+      MONGO_URL: mongodb://zutor-db:27017/ZutorDB
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    depends_on:
+      zutor-db:
+        condition: service_healthy
+
+  zutor-app:
+    container_name: zutor-app
+    build: ./app
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - zutor-api
+
+volumes:
+  zutor-db-data:

@@ -1,0 +1,32 @@
+{
+  "name": "zutor-app",
+  "version": "2.0.0",
+  "private": true,
+  "author": "Eze Ahuna",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@primeuix/themes": "~2.0.3",
+    "axios": "^1.20.0",
+    "primeicons": "^7.0.0",
+    "primevue": "~4.5.5",
+    "vue": "^3.5.44",
+    "vue-router": "^5.4.0",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@primevue/auto-import-resolver": "~4.5.5",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "eslint": "^10.13.0",
+    "eslint-plugin-vue": "^10.11.1",
+    "globals": "^17.13.0",
+    "unplugin-vue-components": "^32.1.0",
+    "vite": "^8.3.5"
+  }
+}
